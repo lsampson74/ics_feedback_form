@@ -1,0 +1,43 @@
+body {
+	background-image: url("img/pattern-6a9l.png")
+}
+
+.starter-template{
+	box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	background: white;
+	padding: 1px 15px;
+	
+}
+
+.navbar-inverse{
+	background:#c22f1b;
+}
+
+.subcont{
+	background-color: #FFFFE8;
+	padding:15px;
+	-moz-border-radius: 5px;
+ 	border-radius: 25px;
+ 	margin-top:20px;
+}
+.navbar-nav{
+	float:right;
+}
+
+.error{
+	color:red;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-branded{
+	float: left;
+	height: 50px;
+	padding: 15px 15px;
+	font-size: 18px;
+	line-height: 20px;
+	color:white;
+}
+

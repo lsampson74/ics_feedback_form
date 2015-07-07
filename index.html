@@ -1,0 +1,550 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+{% autoescape true %}
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ic stars | * Feedback Collection</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <script>
+	$(document).ready(function() {
+		// validate signup form on keyup and submit
+		$("#theForm").validate({
+			errorElement: 'div',
+			errorPlacement: function(error, element) {
+				  if (element.attr("name") == "personality_scr") {
+				     error.insertAfter("#personality_scr_box");
+				  } else if (element.attr("name") == "appearance_scr") {
+					  error.insertAfter("#appearance_scr_box");
+				  } else if (element.attr("name") == "comm_scr") {
+					  error.insertAfter("#comm_scr_box");
+				  } else if (element.attr("name") == "tech_scr") {
+					  error.insertAfter("#tech_scr_box");
+				  } else if (element.attr("name") == "body_scr") {
+					  error.insertAfter("#body_scr_box");
+				  } else if (element.attr("name") == "exp_scr") {
+					  error.insertAfter("#exp_scr_box");
+				  } else if (element.attr("name") == "pres_scr") {
+					  error.insertAfter("#pres_scr_box");
+				  } else {
+				     error.insertAfter(element);
+				  }
+				},
+			rules: {
+				interviewer: {
+					required: true
+				},
+				first_name: {
+					required: true
+				},
+				last_name: {
+					required: true
+				},
+				candidate: {
+					required: true
+				},
+				personality_scr: {
+					required: true
+				},
+				personality_descrip: {
+					required: true
+				},
+				appearance_scr: {
+					required: true
+				},
+				appearance_descrip: {
+					required: true
+				},
+				comm_scr: {
+					required: true
+				},
+				comm_descrip: {
+					required: true
+				},
+				tech_scr: {
+					required: true
+				},
+				tech_descrip: {
+					required: true
+				},
+				body_scr: {
+					required: true
+				},
+				body_descrip: {
+					required: true
+				},
+				pres_scr: {
+					required: true
+				},
+				pres_descrip: {
+					required: true
+				},
+				exp_scr: {
+					required: true
+				},
+				rec_descrip: {
+					required: true
+				},
+
+			},
+			messages: {
+				interviewer: {
+					required: "Please enter the your name."
+				},
+				first_name: {
+					required: "Please enter the candidate's first name."
+				},
+				last_name: {
+					required: "Please enter the candidate's last name."
+				}, 
+				candidate: {
+					required: "Please select a candidate."
+				},
+				personality_scr: {
+					required: "Please enter a score for personality."
+				},
+				personality_descrip: {
+					required: "Please enter a description for the personality score."
+				},
+				appearance_scr: {
+					required: "Please enter a score for appearance."
+				},
+				appearance_descrip: {
+					required: "Please enter a description for the appearance score."
+				},
+				tech_scr: {
+					required: "Please enter a score for technical skills."
+				},
+				tech_descrip: {
+					required: "Please enter a description for the technical skills score."
+				},
+				appearance_scr: {
+					required: "Please enter a score for body language."
+				},
+				body_descrip: {
+					required: "Please enter a description for the body language score."
+				},
+				pres_scr: {
+					required: "Please enter a score for presentation."
+				},
+				pres_descrip: {
+					required: "Please enter a description for the presentation score."
+				},
+				exp_scr: {
+					required: "Please enter a score."
+				},
+				rec_descrip: {
+					required: "Please enter a description."
+				},
+			},
+			submitHandler: function(form) {
+                // do other things for a valid form
+                form.submit();
+            }
+		});
+	});
+   </script>
+  </head>
+  
+ 
+
+  <body>
+  	<nav class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <p class="navbar-branded">| i.c. stars|</p>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+          <ul class="nav navbar-nav">
+            <li><a href="/pass">Admin</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  	<div class="container">
+  	<div class="starter-template" class="col-md-8" class="col-lg-8">
+  		<form id="theForm" name="theForm" action="/sign?candidate_name={{ candidate_name }}" method="post">
+  			<div class="subcont">
+  				<h2>Basic Information</h2>
+  				<div id="int_select">
+		   			<div id="old_int">
+				   		<label for="interviewer">Interviewer</label>
+				   		<a id="new_int_sel">New Interviewer</a>
+				   		<select class="form-control" id="interviewer" name="interviewer">
+				   			<option value="default" disabled selected>Please select an interviewer...</option>
+			  				{% for interviewer in interviewers %}
+			  					<option value="{{ interviewer.i_short }}">{{ interviewer.last_name }}, {{ interviewer.first_name }} </option>
+			  				{% endfor %}
+			  			</select></br>
+			  		</div>
+		   			<div id="new_int" style="display:none">
+		  				<label for="int_first_name">Interviewer's first name</label>
+		  				<a id="old_int_sel">Previous Interviewer</a><br>
+		  				<script>
+				   			document.getElementById("new_int_sel").addEventListener("click", hideOld);
+				   			function hideOld() {
+				   				var x = document.getElementById("new_int");
+				   				x.style.display = '';
+				   				var y = document.getElementById("old_int");
+				   				y.style.display = 'none';
+				   				var z = document.getElementById("interviewer");
+				   				z.value = "";
+				   			}
+				   			document.getElementById("old_int_sel").addEventListener("click", hideNew);
+				   			function hideNew() {
+				   				var x = document.getElementById("old_int");
+				   				x.style.display = '';
+				   				var y = document.getElementById("new_int");
+				   				y.style.display = 'none';
+				   				var z1 = document.getElementById("int_first_name");
+				   				z1.value = null;
+				   				var z2 = document.getElementById("int_last_name");
+				   				z2.value = null;
+				   				
+				   			}
+   						</script>
+				   		<input type="text" class="form-control" id="int_first_name" name="int_first_name" ><br>
+				   		<label for="last_name">Interviewer's last name</label><br>
+				   		<input type="text" class="form-control" id="int_last_name" name="int_last_name" ><br>
+				   	</div>
+		  		</div>
+		   		<div id="candidate_select">
+		   			<!-- MODAL -->
+	   					<div class="modal fade" id="candModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+						   		<div class="modal-content">
+						      		<div class="modal-header">
+						        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        		<h4 class="modal-title" id="myModalLabel">New Candidate Confirmation</h4>
+						      		</div>
+						      	<div class="modal-body">
+						        	Are you sure you want to create a new candidate? Please re-check the drop-down to ensure the candidate does not already exist.
+						      	</div>
+						      	<div class="modal-footer">
+						      		<button type="button" class="btn btn-default" data-dismiss="modal" id="candCheck">Continue</button>
+						        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						      	</div>
+						    	</div>
+						  	</div>
+						</div>
+						<!-- END MODAL -->
+		   			<div id="old_candidate">
+				   		<label for="candidate">Candidate</label>
+				   		<a id="new_cand_sel" data-toggle="modal" data-target="#candModal">New Candidate</a>
+				   		<select class="form-control" id="candidate" name="candidate">
+				   			<option value="default" disabled selected>Please select a candidate...</option>
+			  				{% for candidate in candidates %}
+			  					<option value="{{ candidate.get().c_short }}">{{ candidate.get().last_name }}, {{ candidate.get().first_name }} </option>
+			  				{% endfor %}
+			  			</select></br>
+			  		</div>
+		   			<div id="new_candidate" style="display:none">
+		  				<label for="first_name">Candidate's first name</label>
+		  				<a id="old_cand_sel">Current Candidate</a><br>
+		  				<script>
+				   			document.getElementById("candCheck").addEventListener("click", hideOld);
+				   			function hideOld() {
+				   				var x = document.getElementById("new_candidate");
+				   				x.style.display = '';
+				   				var y = document.getElementById("old_candidate");
+				   				y.style.display = 'none';
+				   				var z = document.getElementById("candidate");
+				   				z.value = "";
+				   			}
+				   			document.getElementById("old_cand_sel").addEventListener("click", hideNew);
+				   			function hideNew() {
+				   				var x = document.getElementById("old_candidate");
+				   				x.style.display = '';
+				   				var y = document.getElementById("new_candidate");
+				   				y.style.display = 'none';
+				   				var z1 = document.getElementById("first_name");
+				   				z1.value = null;
+				   				var z2 = document.getElementById("last_name");
+				   				z2.value = null;
+				   			}
+   						</script>
+				   		<input type="text" class="form-control" id="first_name" name="first_name" ><br>
+				   		<label for="last_name">Candidate's last name</label><br>
+				   		<input type="text" class="form-control" id="last_name" name="last_name" ><br>
+				   	</div>
+		  		</div>
+		   		<label for="company">Company</label><br>
+		   		<input type="text" class="form-control" name="company"><br>
+		   		<!-- <label for="candidate">Name of i.c.stars candidate</label><br>
+		   		<input type="text" value="{{ candidate_name }}" class="form-control" name="candidate_name"><br> -->
+	   		</div>
+	   		<div class="subcont">
+   				<h2>PACTB Assessment</h2>
+   				<p> Personality, Appearance, Communication, Technical Skills, Body Language</p>
+   				<h3>Personality <a data-toggle="modal" data-target="#persModal">?</a></h3>
+   					<!-- MODAL -->
+   					<div class="modal fade" id="persModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+					   		<div class="modal-content">
+					      		<div class="modal-header">
+					        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        		<h4 class="modal-title" id="myModalLabel">Personality Description</h4>
+					      		</div>
+					      	<div class="modal-body">
+					        	Demonstrates confidence and enthusiasm; approachable and inviting.
+					      	</div>
+					      	<div class="modal-footer">
+					        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      	</div>
+					    	</div>
+					  	</div>
+					</div>
+					<!-- END MODAL -->
+   				<label>Please rate candidate on Personality.</label>
+		   		<br>
+		   		<div class="input-group" id="personality_scr_box">
+		   			<span style="padding-right:15px;">Low</span>
+					<label class="radio-inline"><input type="radio" value="1" name="personality_scr">1</label>
+					<label class="radio-inline"><input type="radio" value="2" name="personality_scr">2</label>
+					<label class="radio-inline"><input type="radio" value="3" name="personality_scr">3</label>
+					<label class="radio-inline"><input type="radio" value="4" name="personality_scr">4</label>
+					<span style="padding-left:15px;">High</span>
+				</div>
+				<br>
+		   		<div class="form-group">
+		      		<label for="personality_descrip">Please explain your reasoning for the Personality rating provided above.</label>
+		      		<textarea class="form-control" rows="5" name="personality_descrip"></textarea>
+		   		</div>
+		   		<h3>Appearance <a data-toggle="modal" data-target="#appearModal">?</a></h3>
+   					<!-- MODAL -->
+   					<div class="modal fade" id="appearModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+					   		<div class="modal-content">
+					      		<div class="modal-header">
+					        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        		<h4 class="modal-title" id="myModalLabel">Appearance Description</h4>
+					      		</div>
+					      	<div class="modal-body">
+					        	Dressed in business professional attire; well groomed (clean hair, nails etc.).
+					      	</div>
+					      	<div class="modal-footer">
+					        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      	</div>
+					    	</div>
+					  	</div>
+					</div>
+					<!-- END MODAL -->
+   				<label>Please rate candidate on Appearance.</label>
+		   		<br>
+		   		<div class="input-group" id="appearance_scr_box">
+		   			<span style="padding-right:15px;">Low</span>
+					<label class="radio-inline"><input type="radio" value="1" name="appearance_scr">1</label>
+					<label class="radio-inline"><input type="radio" value="2" name="appearance_scr">2</label>
+					<label class="radio-inline"><input type="radio" value="3" name="appearance_scr">3</label>
+					<label class="radio-inline"><input type="radio" value="4" name="appearance_scr">4</label>
+					<span style="padding-left:15px;">High</span>
+				</div>
+				<br>
+		   		<div class="form-group">
+		      		<label for="appearance_descrip">Please explain your reasoning for the Appearance rating provided above.</label>
+		      		<textarea class="form-control" rows="5" name="appearance_descrip"></textarea>
+		   		</div>
+		   		<h3>Communication <a data-toggle="modal" data-target="#commModal">?</a></h3>
+   					<!-- MODAL -->
+   					<div class="modal fade" id="commModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+					   		<div class="modal-content">
+					      		<div class="modal-header">
+					        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        		<h4 class="modal-title" id="myModalLabel">Communication Description</h4>
+					      		</div>
+					      	<div class="modal-body">
+					        	Communicates clearly and confidently, succinctly answers the questions asked, avoids filler words and slang.
+					      	</div>
+					      	<div class="modal-footer">
+					        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      	</div>
+					    	</div>
+					  	</div>
+					</div>
+					<!-- END MODAL -->
+   				<label>Please rate candidate on Communication.</label>
+		   		<br>
+		   		<div class="input-group" id="comm_scr_box">
+		   		<span style="padding-right:15px;">Low</span>
+					<label class="radio-inline"><input type="radio" value="1" name="comm_scr">1</label>
+					<label class="radio-inline"><input type="radio" value="2" name="comm_scr">2</label>
+					<label class="radio-inline"><input type="radio" value="3" name="comm_scr">3</label>
+					<label class="radio-inline"><input type="radio" value="4" name="comm_scr">4</label>
+					<span style="padding-left:15px;">High</span>
+				</div>
+				<br>
+		   		<div class="form-group">
+		      		<label for="comm_descrip">Please explain your reasoning for the Communication rating provided above.</label>
+		      		<textarea class="form-control" rows="5" name="comm_descrip"></textarea>
+		   		</div>
+		   		<h3>Technical Skills <a data-toggle="modal" data-target="#techModal">?</a></h3>
+   					<!-- MODAL -->
+   					<div class="modal fade" id="techModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+					   		<div class="modal-content">
+					      		<div class="modal-header">
+					        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        		<h4 class="modal-title" id="myModalLabel">Technical Skills Description</h4>
+					      		</div>
+					      	<div class="modal-body">
+					        	Sound knowledge of skills referenced in interviewee’s resume.
+					      	</div>
+					      	<div class="modal-footer">
+					        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      	</div>
+					    	</div>
+					  	</div>
+					</div>
+					<!-- END MODAL -->
+   				<label>Please rate candidate on Technical Skills.</label>
+		   		<br>
+		   		<div class="input-group" id="tech_scr_box">
+		   			<span style="padding-right:15px;">Low</span>
+					<label class="radio-inline"><input type="radio" value="1" name="tech_scr">1</label>
+					<label class="radio-inline"><input type="radio" value="2" name="tech_scr">2</label>
+					<label class="radio-inline"><input type="radio" value="3" name="tech_scr">3</label>
+					<label class="radio-inline"><input type="radio" value="4" name="tech_scr">4</label>
+					<span style="padding-left:15px;">High</span>
+				</div>
+				<br>
+		   		<div class="form-group">
+		      		<label for="tech_descrip">Please explain your reasoning for the Technical Skills rating provided above.</label>
+		      		<textarea class="form-control" rows="5" name="tech_descrip"></textarea>
+		   		</div>
+		   		<h3>Body Language <a data-toggle="modal" data-target="#bodyModal">?</a></h3>
+   					<!-- MODAL -->
+   					<div class="modal fade" id="bodyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+					   		<div class="modal-content">
+					      		<div class="modal-header">
+					        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        		<h4 class="modal-title" id="myModalLabel">Body Language Description</h4>
+					      		</div>
+					      	<div class="modal-body">
+					        	Sits squarely and upright in chair, establishes good eye-contact and remains poised regardless of nervousness.
+					      	</div>
+					      	<div class="modal-footer">
+					        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      	</div>
+					    	</div>
+					  	</div>
+					</div>
+					<!-- END MODAL -->
+   				<label>Please rate candidate on Body Language.</label>
+		   		<br>
+		   		<div class="input-group" id="body_scr_box">
+		   			<span style="padding-right:15px;">Low</span>
+					<label class="radio-inline"><input type="radio" value="1" name="body_scr">1</label>
+					<label class="radio-inline"><input type="radio" value="2" name="body_scr">2</label>
+					<label class="radio-inline"><input type="radio" value="3" name="body_scr">3</label>
+					<label class="radio-inline"><input type="radio" value="4" name="body_scr">4</label>
+					<span style="padding-left:15px;">High</span>
+				</div>
+				<br>
+		   		<div class="form-group">
+		      		<label for="body_descrip">Please explain your reasoning for the Body Language rating provided above.</label>
+		      		<textarea class="form-control" rows="5" name="body_descrip"></textarea>
+		   		</div>
+		   	</div>
+		   	<div class='subcont'>
+		   		<h2>Additional Feedback</h2>
+		   		
+		   		<label>How well do you think your clients would respond to the candidate representing your company in said role?</label>
+		   		<br>
+		   		<div class="input-group" id="pres_scr_box">
+		   			<span style="padding-right:15px;">Not Well</span>
+					<label class="radio-inline"><input type="radio" value="1" name="pres_scr">1</label>
+					<label class="radio-inline"><input type="radio" value="2" name="pres_scr">2</label>
+					<label class="radio-inline"><input type="radio" value="3" name="pres_scr">3</label>
+					<label class="radio-inline"><input type="radio" value="4" name="pres_scr">4</label>
+					<span style="padding-left:15px;">Well</span>
+				</div>
+				<br>
+		   		<div class="form-group">
+		      		<label for="pres_descrip">Please provide any additional information on the strengths and weaknesses of the candidate.</label>
+		      		<textarea class="form-control" rows="5" name="pres_descrip"></textarea>
+		   		</div>
+		   		<label>How well does the candidate bridge their experiences to the postion?</label>
+		   		<br>
+		   		<div class="input-group" id="exp_scr_box">
+		   			<span style="padding-right:15px;">Not Well</span>
+					<label class="radio-inline"><input type="radio" value="1" name="exp_scr">1</label>
+					<label class="radio-inline"><input type="radio" value="2" name="exp_scr">2</label>
+					<label class="radio-inline"><input type="radio" value="3" name="exp_scr">3</label>
+					<label class="radio-inline"><input type="radio" value="4" name="exp_scr">4</label>
+					<span style="padding-left:15px;">Well</span>
+				</div>
+				<br>
+				
+				<div class="form-group">
+		      		<label for="rec_descrip">What would you recommend that the candidate work on prior to interviewing for a “live” position?</label>
+		      		<textarea class="form-control" rows="5" name="rec_descrip"></textarea>
+		   		</div>
+		   		<!-- Did the candidate send a follow up / thank-you email within 48 hours?
+		   		<div class="input-group">
+					<label class="radio-inline"><input type="radio" value="Yes" name="thanks_scr">Yes</label>
+					<label class="radio-inline"><input type="radio" value="No" name="thanks_scr">No</label>
+				</div> -->
+		   	</div>
+		   	<div class="subcont">
+		   		<p>Please ensure all fields have been correctly filled in.</p>
+		   		<button type="submit" id="bttnsubmit" class="btn btn-primary">Submit</button>
+		   	</div>
+   		</form>
+   	</div>
+   	</div>
+   	
+   	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+   	
+   	 <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
+{% endautoescape %}
